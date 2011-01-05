@@ -4,7 +4,7 @@
     <ext:property-placeholder/>
 
     <bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">
-        <property name="URL" value="jdbc:h2:file:${karaf.data}/activiti/database;DB_CLOSE_DELAY=1000"/>
+        <property name="URL" value="jdbc:h2:file:${karaf.data}/activiti/database;DB_CLOSE_DELAY=1000;AUTO_SERVER=TRUE"/>
         <property name="user" value="sa"/>
         <property name="password" value=""/>
     </bean>
