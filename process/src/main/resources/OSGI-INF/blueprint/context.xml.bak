@@ -1,0 +1,11 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <camelContext id="camelProcess" xmlns="http://camel.apache.org/schema/blueprint">
+        <routeBuilder ref="routeBuilder" />
+    </camelContext>
+
+    <bean id="routeBuilder" class="pl.touk.wjug.activiti.route.ProcessRouteBuilder"/>
+    <reference id="processEngine" interface="org.activiti.engine.ProcessEngine"/>
+    <service ref="camelProcess" interface="org.apache.camel.CamelContext"/>
+
+</blueprint>

@@ -1,0 +1,44 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0">
+
+    <ext:property-placeholder/>
+
+    <bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">
+        <property name="URL" value="jdbc:h2:file:${karaf.data}/activiti/database;DB_CLOSE_DELAY=1000"/>
+        <property name="user" value="sa"/>
+        <property name="password" value=""/>
+    </bean>
+
+    <reference id="transactionManager" interface="javax.transaction.TransactionManager"/>
+    <reference-list id="camelProviders"  availability="optional" interface="pl.touk.activiti.camel.ContextProvider"
+            member-type="service-object"/>
+
+    <bean id="configurationFactory" class="pl.touk.wjug.activiti.blueprint.ConfigurationFactory" >
+        <property name="dataSource" ref="dataSource"/>
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+
+    <bean id="configuration"  factory-ref="configurationFactory" factory-method="getConfiguration"/>
+
+    <bean id="processEngineFactory" class="pl.touk.wjug.activiti.blueprint.ProcessEngineFactoryWithELResolver" init-method="init"
+          destroy-method="destroy">
+        <property name="processEngineConfiguration" ref="configuration"/>
+        <property name="bundle" ref="blueprintBundle"/>
+        <property name="blueprintContainer" ref="blueprintContainer"/>
+
+    </bean>
+
+    <bean id="processEngine" factory-ref="processEngineFactory" factory-method="getObject"/>
+
+    <service ref="processEngine" interface="org.activiti.engine.ProcessEngine"/>
+    <service ref="runtimeService" interface="org.activiti.engine.RuntimeService"/>
+
+    <bean id="runtimeService" factory-ref="processEngine" factory-method="getRuntimeService"/>
+    
+    <bean id="camel" class="pl.touk.activiti.camel.CamelBehaviour">
+        <argument ref="camelProviders"/>
+    </bean>
+
+
+</blueprint>
+

@@ -1,0 +1,25 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:osgi="http://www.springframework.org/schema/osgi"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/osgi  http://www.springframework.org/schema/osgi/spring-osgi.xsd
+                           http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <camelContext id="ctx" xmlns="http://camel.apache.org/schema/spring">
+        <routeBuilder ref="routeBuilder"/>
+    </camelContext>
+
+    <bean id="contextProvider" class="pl.touk.activiti.camel.SimpleContextProvider">
+        <constructor-arg index="0" value="camelProcess"/>
+        <constructor-arg index="1" ref="ctx"/>
+
+    </bean>
+
+    <bean id="routeBuilder" class="pl.touk.wjug.activiti.route.ProcessRouteBuilder"/>
+    <osgi:reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
+    <osgi:service ref="contextProvider" interface="pl.touk.activiti.camel.ContextProvider"/>
+
+
+</beans>
