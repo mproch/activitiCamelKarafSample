@@ -1,1 +1,13 @@
 Sample deployment of Activiti process with Camel Integration in Karaf 2.1.2
+
+Usage:
+
+Sample file:
+<sample key="14" var1="value"/>
+
+1. drop sample file to /tmp/activiti/startProcess
+2. process is created, with business key 14, and variable var1=value
+3. service task is invoked, which puts file with random name into /tmp/activiti/startProcess, which contains value of var1
+4. process waits for receive node
+4. drop sample file to /tmp/activit/receive
+5. process ends
