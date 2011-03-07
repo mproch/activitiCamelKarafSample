@@ -10,7 +10,7 @@
     </bean>
 
     <reference id="transactionManager" interface="javax.transaction.TransactionManager"/>
-    <reference-list id="camelProviders"  availability="optional" interface="pl.touk.activiti.camel.ContextProvider"
+    <reference-list id="camelProviders"  availability="optional" interface="org.activiti.camel.ContextProvider"
             member-type="service-object"/>
 
     <bean id="configurationFactory" class="pl.touk.wjug.activiti.blueprint.ConfigurationFactory" >
@@ -35,7 +35,7 @@
 
     <bean id="runtimeService" factory-ref="processEngine" factory-method="getRuntimeService"/>
     
-    <bean id="camel" class="pl.touk.activiti.camel.CamelBehaviour">
+    <bean id="camel" class="org.activiti.camel.CamelBehaviour">
         <argument ref="camelProviders"/>
     </bean>
 

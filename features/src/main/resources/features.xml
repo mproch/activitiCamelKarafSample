@@ -18,7 +18,7 @@
         <bundle>mvn:com.h2database/h2/1.2.143</bundle>
         <bundle>mvn:org.activiti/activiti-engine/${activiti.version}</bundle>
         <bundle>mvn:org.activiti/activiti-osgi/${activiti.version}</bundle>
-        <bundle>mvn:pl.touk.camel.activiti/core/${camel.activiti.version}</bundle>
+	<bundle>mvn:org.activiti/activiti-camel/${activiti.version}</bundle>
     </feature>
 
 
@@ -34,7 +34,6 @@
         <bundle dependency="true">mvn:eu.medsea.mimeutil/mime-util/2.1.3</bundle>
         <bundle dependency="true">mvn:org.springframework/spring-web/${spring.version}</bundle>
         <bundle dependency="true">mvn:org.springframework/spring-webmvc/${spring.version}</bundle>
-        <bundle>mvn:org.activiti/activiti-cycle/${activiti.version}</bundle>
         <bundle>mvn:org.activiti/activiti-osgi-rest/${activiti.version}</bundle>
     </feature>
 

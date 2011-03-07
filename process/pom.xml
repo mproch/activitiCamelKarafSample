@@ -11,7 +11,10 @@
 
   <artifactId>process</artifactId>
   <packaging>bundle</packaging>
-
+  <properties>
+      <wjug.osgi.export>pl.touk.wjug.*,pl.touk.wjug.activiti.form</wjug.osgi.export>
+      
+  </properties>
   <build>
     <resources>
       <resource>

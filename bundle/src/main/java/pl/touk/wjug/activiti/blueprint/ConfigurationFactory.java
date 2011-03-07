@@ -18,6 +18,7 @@ public class ConfigurationFactory {
         conf.setDataSource(dataSource);
         conf.setDatabaseSchemaUpdate("true");
         conf.setTransactionManager(transactionManager);
+        conf.setJobExecutorActivate(true);
         return conf;
     }
 

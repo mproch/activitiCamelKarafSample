@@ -5,6 +5,7 @@ import org.apache.camel.Properties;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.language.XPath;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,5 +37,6 @@ public class ProcessRouteBuilder extends RouteBuilder {
             return o;
         }
     }
+
 
 }

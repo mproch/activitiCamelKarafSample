@@ -1,0 +1,17 @@
+<h1>Set variable</h1>
+
+
+<p>
+  <table>
+    <tr>
+      <td>
+        <label>
+          Variable var1:<br/>
+          <input type="text" name="var1" value="${var1}" />
+          <input type="hidden" name="var1_type" value="Integer" />
+        </label>
+      </td>
+    </tr>
+
+  </table>
+</p>

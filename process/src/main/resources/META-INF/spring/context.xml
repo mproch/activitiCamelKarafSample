@@ -11,7 +11,7 @@
         <routeBuilder ref="routeBuilder"/>
     </camelContext>
 
-    <bean id="contextProvider" class="pl.touk.activiti.camel.SimpleContextProvider">
+    <bean id="contextProvider" class="org.activiti.camel.SimpleContextProvider">
         <constructor-arg index="0" value="camelProcess"/>
         <constructor-arg index="1" ref="ctx"/>
 
@@ -19,7 +19,7 @@
 
     <bean id="routeBuilder" class="pl.touk.wjug.activiti.route.ProcessRouteBuilder"/>
     <osgi:reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
-    <osgi:service ref="contextProvider" interface="pl.touk.activiti.camel.ContextProvider"/>
+    <osgi:service ref="contextProvider" interface="org.activiti.camel.ContextProvider"/>
 
 
 </beans>

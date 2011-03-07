@@ -13,12 +13,23 @@
         <startEvent id="start"/>
         <sequenceFlow id="flow1" sourceRef="start" targetRef="serviceTask"/>
 
-        <serviceTask id="serviceTask" activiti:delegateExpression="${camel}"/>
-        <sequenceFlow id="flow2" sourceRef="serviceTask" targetRef="receive"/>
+        <serviceTask id="serviceTask"  activiti:delegateExpression="${camel}"/>
+        <sequenceFlow id="flow2" sourceRef="serviceTask" targetRef="ht"/>
 
-        <receiveTask id="receive" name="Wait State" />
+        <receiveTask id="receive" name="Wait State"/>
 
-        <sequenceFlow id="flow3" sourceRef="receive" targetRef="end"/>
+        <sequenceFlow id="flow3" sourceRef="ht" targetRef="receive"/>
+
+        <userTask id="ht" name="simple form"
+                  activiti:formKey="OSGI-INF/activiti/simpleForm.form">
+            <potentialOwner>
+                <resourceAssignmentExpression>
+                    <formalExpression>management</formalExpression>
+                </resourceAssignmentExpression>
+            </potentialOwner>
+        </userTask>
+
+        <sequenceFlow id="flow4" sourceRef="receive" targetRef="end"/>
 
         <endEvent id="end"/>
 
