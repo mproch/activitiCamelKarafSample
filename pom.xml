@@ -12,7 +12,7 @@
 
     <properties>
         <log4j.version>1.2.15</log4j.version>
-        <spring.version>3.0.4.RELEASE</spring.version>
+        <spring.version>5.3.18</spring.version>
         <camel.version>2.5.0</camel.version>
         <camel.activiti.version>1.0.0-SNAPSHOT</camel.activiti.version>
         <activiti.version>5.2-SNAPSHOT</activiti.version>
